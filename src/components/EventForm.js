@@ -62,7 +62,7 @@ const EventFrom = () => {
               <button className='btn btn-primary col-auto' onClick={ addEvent } disabled={ unCreatable } >
                 イベントを作成する
             </button>
-              <button className='btn btn-danger col-auto' onClick={ deleteAllEvents } disabled={ state.length === 0 }>
+              <button className='btn btn-danger col-auto' onClick={ deleteAllEvents } disabled={ state.events.length === 0 }>
                 全てのイベントを削除する
             </button>
             </div>

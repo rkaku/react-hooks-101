@@ -34,7 +34,7 @@ const EventFrom = () => {
   };
 
 
-  const deleteAllEvents = (event) => {
+  const deleteAllEvents = event => {
     event.preventDefault();
     const result = window.confirm('全てのイベントを本当に削除してもいいですか？');
 
@@ -51,6 +51,16 @@ const EventFrom = () => {
 
 
   const unCreatable = title === '' || body === '';
+
+
+  const deleteAllOperationLogs = event => {
+    event.preventDefault();
+    const result = window.confirm('操作ログを本当に削除してもいいですか？');
+
+    if (result) {
+      dispatch({ type: DELETE_ALL_OPERATION_LOGS });
+    }
+  };
 
 
   return (
@@ -84,12 +94,26 @@ const EventFrom = () => {
 
           <div className="container-fluid">
             <div className="row">
-              <button className='btn btn-primary col-auto' onClick={ addEvent } disabled={ unCreatable } >
+              <button
+                className='btn btn-primary col-3'
+                onClick={ addEvent }
+                disabled={ unCreatable } >
                 イベントを作成する
-            </button>
-              <button className='btn btn-danger col-auto' onClick={ deleteAllEvents } disabled={ state.events.length === 0 }>
-                全てのイベントを削除する
-            </button>
+              </button>
+              <div className='col-1'></div>
+              <button
+                className='btn btn-warning col-3 text-secondary'
+                onClick={ deleteAllOperationLogs }
+                disabled={ state.operationLogs.length === 0 }>
+                操作ログを削除する
+              </button>
+              <div className='col-1'></div>
+              <button
+                className='btn btn-danger col-'
+                onClick={ deleteAllEvents }
+                disabled={ state.events.length === 0 }>
+                すべてのイベントを削除する
+              </button>
             </div>
           </div>
         </form>

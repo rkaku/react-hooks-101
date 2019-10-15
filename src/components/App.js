@@ -1,7 +1,7 @@
 import React, { useReducer, useState } from "react";
 
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import Event from "./Event";
 import reducer from "../reducers";
 
 const App = () => {
@@ -30,10 +30,10 @@ const App = () => {
           <input
             className='form-control'
             id='formEventTitle'
-            value={title}
-            onChange={event => {
+            value={ title }
+            onChange={ event => {
               setTitle(event.target.value);
-            }}
+            } }
           />
         </div>
         <div className='form-group'>
@@ -41,12 +41,12 @@ const App = () => {
           <textarea
             className='form-control'
             id='formEventBody'
-            value={body}
-            onChange={event => setBody(event.target.value)}
+            value={ body }
+            onChange={ event => setBody(event.target.value) }
           />
         </div>
 
-        <button className='btn btn-primary' onClick={addEvent}>
+        <button className='btn btn-primary' onClick={ addEvent }>
           イベントを作成する
         </button>
         <button className='btn btn-light text-danger'>
@@ -63,7 +63,11 @@ const App = () => {
               <th></th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody>
+            { state.map((event, index) => (
+              <Event key={ index } event={ event } dispatch={ dispatch } />
+            )) }
+          </tbody>
         </table>
       </form>
     </div>

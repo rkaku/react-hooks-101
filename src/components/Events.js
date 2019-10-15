@@ -3,6 +3,7 @@ import React, { useContext } from 'react';
 import Event from './Event';
 import AppContext from '../contexts/AppContext'
 
+
 const Events = () => {
   const { state } = useContext(AppContext);
 

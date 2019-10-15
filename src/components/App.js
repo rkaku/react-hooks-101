@@ -6,6 +6,7 @@ import Events from './Events';
 import AppContext from '../contexts/AppContext';
 import reducer from "../reducers";
 
+
 const App = () => {
   const initialState = {
     events: [],

@@ -3,10 +3,14 @@ import React from 'react';
 const Event = ({ dispatch, event }) => {
   const id = event.id;
   const handleClickDeleteButton = () => {
-    dispatch({
-      type: "DELETE_EVENT",
-      id,
-    });
+    const result = window.confirm(`イベント（ID: ${ id }）を削除してもいいですか？`);
+
+    if (result) {
+      dispatch({
+        type: "DELETE_EVENT",
+        id,
+      });
+    }
   };
 
   return (
@@ -20,7 +24,7 @@ const Event = ({ dispatch, event }) => {
           className='btn btn-light text-danger'
           onClick={ handleClickDeleteButton }>
           削除
-                    </button>
+        </button>
       </td>
     </tr>
   );

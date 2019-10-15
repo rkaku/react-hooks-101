@@ -8,7 +8,7 @@ const operationLogs = (state = [], action) => {
 
       const operationLog = {
         description: action.description,
-        action: action.operatedAt
+        operatedAt: action.operatedAt
       }
       return [operationLog, ...state];
 

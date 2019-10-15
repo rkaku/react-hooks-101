@@ -5,14 +5,11 @@ import AppContext from '../contexts/AppContext';
 import { timeCurrentIso8601 } from "../utils";
 
 
-
 const EventFrom = () => {
-
 
   const { state, dispatch } = useContext(AppContext);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
-
 
   const addEvent = event => {
     event.preventDefault();
@@ -33,7 +30,6 @@ const EventFrom = () => {
     setBody("");
   };
 
-
   const deleteAllEvents = event => {
     event.preventDefault();
     const result = window.confirm('全てのイベントを本当に削除してもいいですか？');
@@ -49,9 +45,7 @@ const EventFrom = () => {
     }
   };
 
-
   const unCreatable = title === '' || body === '';
-
 
   const deleteAllOperationLogs = event => {
     event.preventDefault();
@@ -61,7 +55,6 @@ const EventFrom = () => {
       dispatch({ type: DELETE_ALL_OPERATION_LOGS });
     }
   };
-
 
   return (
     <>
@@ -121,7 +114,6 @@ const EventFrom = () => {
     </>
   );
 };
-
 
 
 export default EventFrom;

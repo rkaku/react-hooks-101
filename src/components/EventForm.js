@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 
-const EventFrom = ({ state, dispatch }) => {
 
+// EventForm Component Function <- State, Actions <- Props
+const EventForm = ({ state, dispatch }) => {
+
+  // useState
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
+  // Create Method
   const addEvent = event => {
     event.preventDefault();
     dispatch({
@@ -17,6 +21,7 @@ const EventFrom = ({ state, dispatch }) => {
     setBody("");
   };
 
+  // Delete All
   const deleteAllEvents = (event) => {
     event.preventDefault();
     const result = window.confirm('全てのイベントを本当に削除してもいいですか？');
@@ -24,15 +29,16 @@ const EventFrom = ({ state, dispatch }) => {
     if (result) dispatch({ type: 'DELETE_ALL_EVENTS' });
   };
 
+  // Disabled Conditions
   const unCreatable = title === '' || body === '';
 
+  // EventForm Component
   return (
     <>
-      <header className='container-fluid'>
-        <h4 className="text-center">イベント作成フォーム</h4>
-      </header>
+      <br></br>
+      <h4 className="text-center">イベント作成フォーム</h4>
 
-      <div className='container-fluid'>
+      <div className='container'>
         <form>
           <div className='form-group'>
             <label htmlFor='formEventTitle'>タイトル</label>
@@ -57,10 +63,10 @@ const EventFrom = ({ state, dispatch }) => {
 
           <div className="container-fluid">
             <div className="row">
-              <button className='btn btn-primary col-auto' onClick={ addEvent } disabled={ unCreatable } >
+              <button className='btn btn-primary col-4' onClick={ addEvent } disabled={ unCreatable } >
                 イベントを作成する
             </button>
-              <button className='btn btn-danger col-auto' onClick={ deleteAllEvents } disabled={ state.length === 0 }>
+              <button className='btn btn-danger col-4' onClick={ deleteAllEvents } disabled={ state.length === 0 }>
                 全てのイベントを削除する
             </button>
             </div>
@@ -71,4 +77,5 @@ const EventFrom = ({ state, dispatch }) => {
   );
 };
 
-export default EventFrom;
+
+export default EventForm;

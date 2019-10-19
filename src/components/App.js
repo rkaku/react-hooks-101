@@ -1,14 +1,21 @@
 import React, { useReducer, useState } from "react";
-
 import "bootstrap/dist/css/bootstrap.min.css";
+// Event Component
 import Event from "./Event";
+// Reducers
 import reducer from "../reducers";
 
+
+// App Component Function
 const App = () => {
+
+  // useReducer
   const [state, dispatch] = useReducer(reducer, []);
+  // useState
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
+  // Create
   const addEvent = event => {
     event.preventDefault();
     dispatch({
@@ -21,8 +28,10 @@ const App = () => {
     setBody("");
   };
 
+  // App Component
   return (
-    <div className='container-fluid'>
+    <div className='container'>
+      <br></br>
       <h4>イベント作成フォーム</h4>
       <form>
         <div className='form-group'>
@@ -49,7 +58,7 @@ const App = () => {
         <button className='btn btn-primary' onClick={ addEvent }>
           イベントを作成する
         </button>
-        <button className='btn btn-light text-danger'>
+        <button className='btn btn-danger'>
           全てのイベントを削除する
         </button>
 
@@ -63,15 +72,23 @@ const App = () => {
               <th></th>
             </tr>
           </thead>
+          {/* Table Body */ }
           <tbody>
-            { state.map((event, index) => (
-              <Event key={ index } event={ event } dispatch={ dispatch } />
-            )) }
+            {
+              // Table Body Map -> Index, Event
+              state.map((event, index) => (
+                // Event Component
+                // Event Components <- Index
+                // Event, Dispatch -> Events.js
+                <Event key={ index } event={ event } dispatch={ dispatch } />
+              ))
+            }
           </tbody>
         </table>
       </form>
     </div>
   );
 };
+
 
 export default App;

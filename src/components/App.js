@@ -1,22 +1,30 @@
 import React, { useReducer, useState } from "react";
-
 import "bootstrap/dist/css/bootstrap.min.css";
-
+// Events Reducer
 import reducer from "../reducers";
 
+
+// App Component Function
 const App = () => {
+
+  // useReducer -> Events Reducer -> State, Actions
   const [state, dispatch] = useReducer(reducer, []);
+  // useState -> Title, Body
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
+  // addEvent Method
   const addEvent = event => {
+    // Prevent Default
     event.preventDefault();
+    // Dispatch
     dispatch({
       type: "CREATE_EVENT",
       title,
       body,
     });
 
+    // Initialize
     setTitle("");
     setBody("");
   };
@@ -30,10 +38,11 @@ const App = () => {
           <input
             className='form-control'
             id='formEventTitle'
-            value={title}
-            onChange={event => {
+            value={ title }
+            // onChange -> setTitle
+            onChange={ event => {
               setTitle(event.target.value);
-            }}
+            } }
           />
         </div>
         <div className='form-group'>
@@ -41,14 +50,17 @@ const App = () => {
           <textarea
             className='form-control'
             id='formEventBody'
-            value={body}
-            onChange={event => setBody(event.target.value)}
+            value={ body }
+            // onChange -> setBody
+            onChange={ event => setBody(event.target.value) }
           />
         </div>
 
-        <button className='btn btn-primary' onClick={addEvent}>
+        {/* onClick -> addEvent -> Dispatch */}
+        <button className='btn btn-primary' onClick={ addEvent }>
           イベントを作成する
         </button>
+        {/* onClick ->  */}
         <button className='btn btn-light text-danger'>
           全てのイベントを削除する
         </button>
@@ -69,5 +81,6 @@ const App = () => {
     </div>
   );
 };
+
 
 export default App;

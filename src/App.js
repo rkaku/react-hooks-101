@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react'
 
+
+// App Component Function
 const App = props => {
 
+  // useState -> Props -> state, setState
   const [state, setState] = useState(props)
+  // state -> name, price
   const { name, price } = state
 
+  // useEffect
   useEffect(() => {
     console.log('This is like componentDidMount or componentDidUpdate.')
   })
@@ -15,6 +20,7 @@ const App = props => {
     console.log('This callback is for name only.')
   }, [name])
 
+  // App Component
   return (
     <>
       <p>現在の{ name }は、{ price }円です。</p>
@@ -29,9 +35,12 @@ const App = props => {
   )
 }
 
+
+// Default Props -> App
 App.defaultProps = {
   name: '',
   price: 1000
 }
+
 
 export default App

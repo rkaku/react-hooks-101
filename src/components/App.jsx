@@ -1,27 +1,31 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
+// App Component Function
 const App = () => {
+  // App Component
   return (
-    <div className="container-fluid">
-      <h4>イベント作成フォーム</h4>
+    <div className='container'>
+      <br/>
+      <h3 className="text-center">イベント作成フォーム</h3>
+
       <form>
-        <div className="form-group">
-          <label htmlFor="formEventTitle">タイトル</label>
-          <input className="form-control" id="formEventTitle" />
-        </div>
-        <div className="form-group">
-          <label htmlFor="formEventBody">内容</label>
-          <textarea className="form-control" id="formEventBody" />
+        <div className='form-group'>
+          <label htmlFor='formEventTitle'>タイトル</label>
+          <input className='form-control' id='formEventTitle' />
         </div>
 
-        <button className="btn btn-primary">イベントを作成する</button>
-        <button className="btn btn-light text-danger">
-          全てのイベントを削除する
-        </button>
+        <div className='form-group'>
+          <label htmlFor='formEventBody'>内容</label>
+          <textarea className='form-control' id='formEventBody' />
+        </div>
+
+        <button className='btn btn-primary'>イベントを作成する</button>
+        <button className='btn btn-danger'>全てのイベントを削除する</button>
 
         <h4>イベント一覧</h4>
-        <table className="table table-hover">
+
+        <table className='table table-hover'>
           <thead>
             <tr>
               <th>ID</th>
@@ -30,11 +34,13 @@ const App = () => {
               <th></th>
             </tr>
           </thead>
+
           <tbody></tbody>
         </table>
       </form>
     </div>
   );
 };
+
 
 export default App;

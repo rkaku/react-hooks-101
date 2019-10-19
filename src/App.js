@@ -1,21 +1,25 @@
 import React, { useState } from 'react'
 
+
+// App Component Function
 const App = () => {
 
+  // useState -> State & Actions
   const [count, setCount] = useState(0)
 
+  // Methods -> JS
   const increment = () => setCount(count + 1)
   const decrement = () => setCount(count - 1)
-
-  const increment2 = () => setCount(previousCount => previousCount + 1)
-  const decrement2 = () => setCount(previousCount => previousCount - 1)
-
+  // Methods -> Function
+  const increment2 = () => setCount(prev => prev + 1)
+  const decrement2 = () => setCount(prev => prev - 1)
+  // Method -> Const
   const reset = () => setCount(0)
-  const double = () => setCount(previousCount => previousCount * 2)
-  const oneThird = () => setCount(previousCount =>
-    previousCount % 3 === 0 ? previousCount / 3 : previousCount
-  )
+  // Methods -> Function
+  const double = () => setCount(prev => prev * 2)
+  const oneThird = () => setCount(prev => prev % 3 === 0 ? prev / 3 : prev)
 
+  // App Component
   return (
     <>
       <div>
@@ -37,5 +41,6 @@ const App = () => {
     </>
   )
 }
+
 
 export default App

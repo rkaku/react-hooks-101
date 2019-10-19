@@ -1,14 +1,17 @@
 import React, { useReducer, useState } from "react";
-
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import Event from "./Event";
 import reducer from "../reducers";
 
+
 const App = () => {
+
   const [state, dispatch] = useReducer(reducer, []);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
+  // Create Method
   const addEvent = event => {
     event.preventDefault();
     dispatch({
@@ -21,6 +24,7 @@ const App = () => {
     setBody("");
   };
 
+  // Delete All Method
   const deleteAllEvents = (event) => {
     event.preventDefault();
     const result = window.confirm('全てのイベントを本当に削除してもいいですか？');
@@ -28,12 +32,13 @@ const App = () => {
     if (result) dispatch({ type: 'DELETE_ALL_EVENTS' });
   };
 
+  // Disabled
   const unCreatable = title === '' || body === '';
 
   return (
     <>
-      <br></br>
-      <header className='container-fluid'>
+      <header className='container'>
+        <br></br>
         <h4 className="text-center">イベント作成フォーム</h4>
       </header>
 
@@ -60,14 +65,14 @@ const App = () => {
             />
           </div>
 
-          <br></br>
-          <button className='btn btn-primary col' onClick={ addEvent } disabled={ unCreatable } >
+          <button className='btn btn-primary col-4' onClick={ addEvent } disabled={ unCreatable } >
             イベントを作成する
+          </button>
+          <button className='btn btn-danger col-4' onClick={ deleteAllEvents } disabled={ state.length === 0 }>
+            全てのイベントを削除する
           </button>
         </div>
 
-        <br></br>
-        <br></br>
         <div className='container'>
           <h4>イベント一覧</h4>
           <table className='table table-hover'>
@@ -80,20 +85,18 @@ const App = () => {
               </tr>
             </thead>
             <tbody>
-              { state.map((event, index) => (
-                <Event key={ index } event={ event } dispatch={ dispatch } />
-              )) }
+              {
+                state.map((event, index) => (
+                  <Event key={ index } event={ event } dispatch={ dispatch } />
+                ))
+              }
             </tbody>
           </table>
-
-          <br></br>
-          <button className='btn btn-danger col' onClick={ deleteAllEvents } disabled={ state.length === 0 }>
-            全てのイベントを削除する
-        </button>
         </div>
       </form>
     </>
   );
 };
+
 
 export default App;

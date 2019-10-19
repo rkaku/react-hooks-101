@@ -1,10 +1,15 @@
 import React from 'react';
 
-const Event = ({ dispatch, event }) => {
-  const id = event.id;
-  const handleClickDeleteButton = () => {
-    const result = window.confirm(`イベント（ID: ${ id }）を削除してもいいですか？`);
 
+// Event Component Function
+const Event = ({ dispatch, event }) => {
+  // Event ID
+  const id = event.id;
+  // Delete Method
+  const handleClickDeleteButton = () => {
+    // Confirm
+    const result = window.confirm(`イベント（ID: ${ id }）を削除してもいいですか？`);
+    // Delete Action
     if (result) {
       dispatch({
         type: "DELETE_EVENT",
@@ -13,6 +18,7 @@ const Event = ({ dispatch, event }) => {
     }
   };
 
+  // Event Component
   return (
     <tr>
       <td>{ id }</td>
@@ -21,7 +27,7 @@ const Event = ({ dispatch, event }) => {
       <td>
         <button
           type='button'
-          className='btn btn-light text-danger'
+          className='btn btn-danger'
           onClick={ handleClickDeleteButton }>
           削除
         </button>

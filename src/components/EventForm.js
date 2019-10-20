@@ -65,6 +65,7 @@ const EventFrom = () => {
 
   return (
     <>
+      <br></br>
       <header className='container-fluid'>
         <h4 className="text-center">イベント作成フォーム</h4>
       </header>
@@ -109,7 +110,7 @@ const EventFrom = () => {
               </button>
               <div className='col-1'></div>
               <button
-                className='btn btn-danger col-'
+                className='btn btn-danger col-3'
                 onClick={ deleteAllEvents }
                 disabled={ state.events.length === 0 }>
                 すべてのイベントを削除する

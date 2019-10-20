@@ -1,13 +1,17 @@
 import React, { useContext } from 'react';
-
+// OperationLog Component
 import OperationLog from './OperationLog';
+// App Context
 import AppContext from '../contexts/AppContext';
 
 
+// OperationLogs Component Function
 const OperationLogs = () => {
 
+  // State <- useContext <- App Context
   const { state } = useContext(AppContext);
 
+  // OperationLogs Component
   return (
     <>
       <div className='container-fluid'>
@@ -24,9 +28,10 @@ const OperationLogs = () => {
           </thead>
           <tbody>
             {
-              state.operationLogs.map((operationLog, index) => {
-                return <OperationLog key={ index } operationLog={ operationLog } />
-              })
+              state.operationLogs.map((operationLog, index) => <OperationLog
+                key={ index }
+                operationLog={ operationLog }
+              />)
             }
           </tbody>
         </table>

@@ -8,10 +8,14 @@ import reducer from "../reducers";
 
 
 const App = () => {
+
+  // Initial State Object
   const initialState = {
     events: [],
     operationLogs: []
   }
+
+  // State & Actions Object <- useReducer <- Reducer Objects
   const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
@@ -21,5 +25,6 @@ const App = () => {
     </AppContext.Provider>
   );
 };
+
 
 export default App;

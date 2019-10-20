@@ -24,7 +24,7 @@ const Event = ({ event }) => {
       <td>
         <button
           type='button'
-          className='btn btn-light text-danger'
+          className='btn btn-danger'
           onClick={ handleClickDeleteButton }>
           削除
         </button>

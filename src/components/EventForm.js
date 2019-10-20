@@ -1,46 +1,48 @@
 import React, { useContext, useState } from 'react';
-
-import { CREATE_EVENT, DELETE_ALL_EVENTS, ADD_OPERATION_LOG, DELETE_ALL_OPERATION_LOGS } from '../actions';
 import AppContext from '../contexts/AppContext';
 import { timeCurrentIso8601 } from "../utils";
-
+import {
+  CREATE_EVENT,
+  DELETE_ALL_EVENTS,
+  ADD_OPERATION_LOG,
+  DELETE_ALL_OPERATION_LOGS
+} from '../actions';
 
 
 const EventFrom = () => {
-
 
   const { state, dispatch } = useContext(AppContext);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
-
   const addEvent = event => {
     event.preventDefault();
-
+    // Create
     dispatch({
       type: CREATE_EVENT,
       title,
       body,
     });
-
+    // Add Log
     dispatch({
       type: ADD_OPERATION_LOG,
       description: 'イベントを作成しました。',
       operatedAt: timeCurrentIso8601
     });
-
+    // Clear
     setTitle("");
     setBody("");
   };
 
-
   const deleteAllEvents = (event) => {
     event.preventDefault();
+    // Confirm
     const result = window.confirm('全てのイベントを本当に削除してもいいですか？');
 
     if (result) {
+      // Delete All
       dispatch({ type: DELETE_ALL_EVENTS });
-
+      // Add Log
       dispatch({
         type: ADD_OPERATION_LOG,
         description: '全てのイベントを削除しました。',
@@ -49,17 +51,16 @@ const EventFrom = () => {
     }
   };
 
-
   const unCreatable = title === '' || body === '';
-
 
   return (
     <>
-      <header className='container-fluid'>
+      <br></br>
+      <header className='container-'>
         <h4 className="text-center">イベント作成フォーム</h4>
       </header>
 
-      <div className='container-fluid'>
+      <div className='container'>
         <form>
           <div className='form-group'>
             <label htmlFor='formEventTitle'>タイトル</label>
@@ -84,10 +85,10 @@ const EventFrom = () => {
 
           <div className="container-fluid">
             <div className="row">
-              <button className='btn btn-primary col-auto' onClick={ addEvent } disabled={ unCreatable } >
+              <button className='btn btn-primary col-4' onClick={ addEvent } disabled={ unCreatable } >
                 イベントを作成する
             </button>
-              <button className='btn btn-danger col-auto' onClick={ deleteAllEvents } disabled={ state.events.length === 0 }>
+              <button className='btn btn-danger col-4' onClick={ deleteAllEvents } disabled={ state.events.length === 0 }>
                 全てのイベントを削除する
             </button>
             </div>
@@ -97,7 +98,6 @@ const EventFrom = () => {
     </>
   );
 };
-
 
 
 export default EventFrom;

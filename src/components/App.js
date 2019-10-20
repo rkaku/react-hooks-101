@@ -1,41 +1,47 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useEffect, useReducer } from "react";
-
-// Context
+// App Context
 import AppContext from '../contexts/AppContext';
-
+// Reducers
+import reducer from "../reducers";
 // Component
 import EventForm from './EventForm';
 import Events from './Events';
 import OperationLogs from './OperationLogs';
 
-// Reducer
-import reducer from "../reducers";
 
-
-// LocalStorage -> Key
+// Local Storage Key
 const APP_KEY = 'appWithRedux';
 
 
+// App Component Function
 const App = () => {
-  // LocalStorage -> Get
+
+  // Local Storage -> Get
   const appState = localStorage.getItem(APP_KEY);
 
-  // Data -> Initialize || Restore
-  const initialState = appState ? JSON.parse(appState) : {
-    events: [],
-    operationLogs: []
-  };
+  // State Object <- Local Storage || []
+  const initialState =
+    // Local Storage ? Data Object : []
+    appState ? JSON.parse(appState) : {
+      events: [],
+      operationLogs: []
+    };
 
-  // Reducer
+  // State, Actions <- useReducer <- Reducers Object
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  // LocalStorage -> Set
+  // useEffect <- Function, State
   useEffect(() => {
-    localStorage.setItem(APP_KEY, JSON.stringify(state));
+    // Local Storage -> Set
+    localStorage.setItem(
+      // Key, Value
+      APP_KEY, JSON.stringify(state)
+    );
+    // State
   }, [state]);
 
-  // Component & Context
+  // App Component
   return (
     <AppContext.Provider value={ { state, dispatch } }>
       <EventForm />

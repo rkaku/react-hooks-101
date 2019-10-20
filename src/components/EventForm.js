@@ -58,11 +58,12 @@ const EventFrom = () => {
 
   return (
     <>
+      <br></br>
       <header className='container-fluid'>
         <h4 className="text-center">イベント作成フォーム</h4>
       </header>
 
-      <div className='container-fluid'>
+      <div className='container'>
         <form>
           <div className='form-group'>
             <label htmlFor='formEventTitle'>タイトル</label>
@@ -85,7 +86,7 @@ const EventFrom = () => {
             />
           </div>
 
-          <div className="container-fluid">
+          <div className="container">
             <div className="row">
               <button
                 className='btn btn-primary col-3'
@@ -95,17 +96,17 @@ const EventFrom = () => {
               </button>
               <div className='col-1'></div>
               <button
-                className='btn btn-warning col-3 text-secondary'
-                onClick={ deleteAllOperationLogs }
-                disabled={ state.operationLogs.length === 0 }>
-                操作ログを削除する
-              </button>
-              <div className='col-1'></div>
-              <button
-                className='btn btn-danger col-'
+                className='btn btn-danger col-3'
                 onClick={ deleteAllEvents }
                 disabled={ state.events.length === 0 }>
                 すべてのイベントを削除する
+              </button>
+              <div className='col-1'></div>
+              <button
+                className='btn btn-secondary col-3'
+                onClick={ deleteAllOperationLogs }
+                disabled={ state.operationLogs.length === 0 }>
+                操作ログを削除する
               </button>
             </div>
           </div>

@@ -1,8 +1,12 @@
 import React, { useContext } from 'react';
+// App Context
 import AppContext from '../contexts/AppContext';
 import { DELETE_EVENT } from '../actions';
 
+
 const Event = ({ event }) => {
+
+  // Action <- useContext <- App Context
   const { dispatch } = useContext(AppContext);
   const id = event.id;
   const handleClickDeleteButton = () => {
@@ -32,5 +36,6 @@ const Event = ({ event }) => {
     </tr>
   );
 }
+
 
 export default Event;

@@ -1,9 +1,12 @@
 import React, { useContext } from 'react';
-
 import Event from './Event';
+// App Context
 import AppContext from '../contexts/AppContext'
 
+
 const Events = () => {
+
+  // State <- useContext <- App Context
   const { state } = useContext(AppContext);
 
   return (
@@ -21,14 +24,17 @@ const Events = () => {
             </tr>
           </thead>
           <tbody>
-            { state.map((event, index) => (
-              <Event key={ index } event={ event } />
-            )) }
+            {
+              state.map((event, index) => (
+                <Event key={ index } event={ event } />
+              ))
+            }
           </tbody>
         </table>
       </div>
     </>
   );
 };
+
 
 export default Events;

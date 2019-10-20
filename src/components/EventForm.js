@@ -1,8 +1,12 @@
 import React, { useContext, useState } from 'react';
+// App Context
 import AppContext from '../contexts/AppContext';
 import { CREATE_EVENT, DELETE_ALL_EVENTS } from '../actions';
 
+
 const EventFrom = () => {
+
+  // State, Actions <- useContext <- App Context
   const { state, dispatch } = useContext(AppContext);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
@@ -72,5 +76,6 @@ const EventFrom = () => {
     </>
   );
 };
+
 
 export default EventFrom;

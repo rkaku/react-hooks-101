@@ -1,5 +1,6 @@
 import { CREATE_EVENT, DELETE_EVENT, DELETE_ALL_EVENTS } from '../actions';
 
+// Events Reducer
 const events = (state = [], action) => {
   switch (action.type) {
     case CREATE_EVENT:

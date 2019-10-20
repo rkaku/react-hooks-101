@@ -65,7 +65,8 @@ const EventFrom = () => {
 
   return (
     <>
-      <header className='container-fluid'>
+      <br></br>
+      <header className='container'>
         <h4 className="text-center">イベント作成フォーム</h4>
       </header>
 
@@ -92,29 +93,25 @@ const EventFrom = () => {
             />
           </div>
 
-          <div className="container-fluid">
-            <div className="row">
-              <button
-                className='btn btn-primary col-3'
-                onClick={ addEvent }
-                disabled={ unCreatable } >
-                イベントを作成する
+          <div className="text-center">
+            <button
+              className='btn btn-primary'
+              onClick={ addEvent }
+              disabled={ unCreatable } >
+              イベントを作成する
               </button>
-              <div className='col-1'></div>
-              <button
-                className='btn btn-warning col-3 text-secondary'
-                onClick={ deleteAllOperationLogs }
-                disabled={ state.operationLogs.length === 0 }>
-                操作ログを削除する
+            <button
+              className='btn btn-warning text-secondary'
+              onClick={ deleteAllOperationLogs }
+              disabled={ state.operationLogs.length === 0 }>
+              操作ログを削除する
               </button>
-              <div className='col-1'></div>
-              <button
-                className='btn btn-danger col-'
-                onClick={ deleteAllEvents }
-                disabled={ state.events.length === 0 }>
-                すべてのイベントを削除する
+            <button
+              className='btn btn-danger'
+              onClick={ deleteAllEvents }
+              disabled={ state.events.length === 0 }>
+              すべてのイベントを削除する
               </button>
-            </div>
           </div>
         </form>
       </div>

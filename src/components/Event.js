@@ -1,23 +1,34 @@
 import React, { useContext } from 'react';
-
-import { ADD_OPERATION_LOG, DELETE_EVENT } from '../actions';
+// App Context
 import AppContext from '../contexts/AppContext';
+// Time
 import { timeCurrentIso8601 } from "../utils";
+// Actions
+import {
+  ADD_OPERATION_LOG,
+  DELETE_EVENT
+} from '../actions';
 
 
+// Event Component Function
 const Event = ({ event }) => {
+
+  // Actions <- useContext <- App Context
   const { dispatch } = useContext(AppContext);
+  // Event ID
   const id = event.id;
+
+  // Delete Method
   const handleClickDeleteButton = () => {
     const result = window.confirm(`イベント（ID: ${ id }）を削除してもいいですか？`);
 
     if (result) {
-
+      // Delete Event
       dispatch({
         type: DELETE_EVENT,
         id,
       });
-
+      // Add Log
       dispatch({
         type: ADD_OPERATION_LOG,
         description: `イベント(id=${ id })を削除しました。`,
@@ -26,6 +37,7 @@ const Event = ({ event }) => {
     }
   };
 
+  // Event Component
   return (
     <tr>
       <td>{ id }</td>
@@ -42,5 +54,6 @@ const Event = ({ event }) => {
     </tr>
   );
 }
+
 
 export default Event;
